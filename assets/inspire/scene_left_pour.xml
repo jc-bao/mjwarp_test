@@ -1,0 +1,96 @@
+<mujoco>
+    <include file="inspire_hand_left.xml" />
+
+    <option timestep="0.005" iterations="5" ls_iterations="50" integrator="implicitfast">
+        <flag eulerdamp="disable" />
+    </option>
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0.9 0.9 0.9" />
+        <rgba haze="0.15 0.25 0.35 1" />
+        <global azimuth="140" elevation="-20" />
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="3072" />
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+            rgb2="0.1 0.2 0.3"
+            markrgb="0.8 0.8 0.8" width="300" height="300" />
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"
+            reflectance="0.2" />
+    </asset>
+
+    <worldbody>
+        <!-- The floor is slightly elevated to accommodate the reference mocap data for the
+        humanoid_mocap task -->
+        <light pos="0 0 3.5" dir="0 0 -1" directional="false" />
+        <geom name="floor" size="0 0 0.05" pos="0 0 0.0" type="plane" material="groundplane"
+        />
+        <body name="object" pos="0 0.2 0.2">
+            <freejoint />
+            <camera name="track" pos="0 -.6 .3" xyaxes="1 0 0 0 1 2" mode="track" />
+            <geom name="object" type="cylinder" density="1000" size="0.03 0.03"
+                rgba="1.0 1.0 1.0 1" pos="0 0 0" />
+        </body>
+    </worldbody>
+
+    <!-- manually specify the contact pairs -->
+    <contact>
+        <!-- mandatory finger tip collision, enable condim=4 for pinch motion with thumb and index
+        finger -->
+        <pair name="left_thumb_collision_box" geom1="left_thumb_collision" geom2="object"
+            solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="4" />
+        <pair name="left_index_collision_box" geom1="left_index_collision" geom2="object"
+            solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="4" />
+        <pair name="left_middle_collision_box" geom1="left_middle_collision" geom2="object"
+            solref="0.008 1"
+            friction="1.0 1.0" condim="3" />
+        <pair name="left_ring_collision_box" geom1="left_ring_collision" geom2="object"
+            solref="0.008 1"
+            friction="1.0 1.0" condim="3" />
+        <pair name="left_pinky_collision_box" geom1="left_pinky_collision" geom2="object"
+            solref="0.008 1"
+            friction="1 1" condim="3" />
+        <pair name="object_ground_contact" geom1="object" geom2="floor" solref="0.008 1"
+            friction="1 1" condim="3" />
+
+
+        <!-- optional intermediate collision, mainly for power grasp-->
+        <pair name="left_thumb_intermediate_collision_box"
+            geom1="left_thumb_intermediate_collision"
+            geom2="object" solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+        <pair name="left_index_intermediate_collision_box"
+            geom1="left_index_intermediate_collision"
+            geom2="object" solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+        <pair name="left_middle_intermediate_collision_box"
+            geom1="left_middle_intermediate_collision"
+            geom2="object" solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+        <pair name="left_ring_intermediate_collision_box"
+            geom1="left_ring_intermediate_collision"
+            geom2="object" solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+        <pair name="left_pinky_intermediate_collision_box"
+            geom1="left_pinky_intermediate_collision"
+            geom2="object" solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+        <pair name="left_palm_collision_box" geom1="left_palm_collision" geom2="object"
+            solref="0.008 1"
+            friction="1.0 1.0 0.1" condim="3" />
+    </contact>
+
+
+    <keyframe>
+        <key name="home"
+            qpos="-6.63107e-06 -1.16894e-06 0.140809 0.695408 0.758181 1.00519 1.02936 0.407802 0.29024 0.232091 0.6372 0.79822 0.592757 0.559556 0.853474 0.897017 0.927475 1.16616 0.153818 -0.0780772 0.0133776 0.474541 0.504394 0.537479 0.481158"
+            qvel="1.80906e-07 2.27134e-10 4.80344e-07 -4.78929e-08 -4.78372e-08 1.14031e-08 1.39215e-08 5.20784e-08 2.88532e-08 1.78942e-08 -6.45009e-09 -1.03129e-08 5.33699e-14 4.83294e-14 1.19818e-13 7.48083e-14 9.14193e-14 5.04048e-14 0.000318646 0.000101408 -1.76223e-05 -0.000176121 -0.000490178 -0.000275083"
+            ctrl="0 0 0.16 0.695296 0.757556 1.00549 1.02943 0.407841 0.290241 0.23208 0.63732 0.798316 0.59276 0.559558 0.853479 0.897019 0.927479 1.16616"
+        />
+    </keyframe>
+
+</mujoco>
