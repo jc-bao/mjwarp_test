@@ -1,0 +1,45 @@
+<mujoco model="coke">
+    <option timestep="0.01" iterations="20" ls_iterations="50" integrator="implicitfast">
+        <flag eulerdamp="disable" />
+    </option>
+
+    <default>
+        <geom density="100" />
+    </default>
+
+    <asset>
+        <mesh name="right_0" file="objects/coke/convex/0.obj" />
+        <mesh name="right_1" file="objects/coke/convex/1.obj" />
+        <mesh name="right_2" file="objects/coke/convex/2.obj" />
+        <mesh name="right_3" file="objects/coke/convex/3.obj" />
+        <mesh name="right_4" file="objects/coke/convex/4.obj" />
+        <mesh name="right_5" file="objects/coke/convex/5.obj" />
+        <mesh name="right_6" file="objects/coke/convex/6.obj" />
+        <mesh name="right_7" file="objects/coke/convex/7.obj" />
+        <mesh name="right_visual" file="objects/coke/visual.obj" />
+        <texture type="2d" colorspace="auto" name="groundplane" builtin="checker" mark="edge"
+            rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"
+            reflectance="0.2" />
+    </asset>
+
+    <worldbody>
+        <light pos="0 0 10" dir="0 0 -1" directional="true" castshadow="true" />
+        <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" />
+        <body name="coke" pos="0 0 0.06" quat="1 1 0 0">
+            <joint name="joint" type="free" />
+            <geom name="geom" type="mesh" mesh="right_visual" pos="0 0 0" euler="0 0 0"
+                conaffinity="0" contype="0" />
+            <geom name="geom_0" type="mesh" mesh="right_0" pos="0 0 0" euler="0 0 0" />
+            <geom name="geom_1" type="mesh" mesh="right_1" pos="0 0 0" euler="0 0 0" />
+            <geom name="geom_2" type="mesh" mesh="right_2" pos="0 0 0" euler="0 0 0" />
+            <geom name="geom_3" type="mesh" mesh="right_3" pos="0 0 0" euler="0 0 0" />
+            <geom name="geom_4" type="mesh" mesh="right_4" pos="0 0 0" euler="0 0 0" />
+            <geom name="geom_5" type="mesh" mesh="right_5" pos="0 0 0" euler="0 0 0" />
+        </body>
+    </worldbody>
+
+    <keyframe>
+
+    </keyframe>
+</mujoco>

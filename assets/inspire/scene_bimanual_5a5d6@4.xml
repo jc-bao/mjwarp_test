@@ -1,0 +1,562 @@
+<mujoco model="bimanual">
+  <compiler angle="radian" meshdir="./meshes/"/>
+
+  <option timestep="0.01" iterations="10" ls_iterations="20">
+    <flag eulerdamp="disable"/>
+  </option>
+
+  <visual>
+    <global azimuth="140" elevation="-20"/>
+    <headlight diffuse="0.6 0.6 0.6" specular="0.9 0.9 0.9"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <default>
+    <joint armature="1"/>
+    <geom contype="0" conaffinity="0" condim="1"/>
+    <general biastype="affine" gainprm="300" biasprm="0 -300 1"/>
+    <default class="finger"/>
+    <default class="wrist_position"/>
+    <default class="wrist_rotation"/>
+    <default class="mimic_right">
+      <site size="0.01 0.005 0.005" group="3" rgba="1 0 0 1"/>
+    </default>
+    <default class="finger_tip_collision">
+      <geom size="0.01 0 0" group="3" rgba="0 1 0 1"/>
+    </default>
+    <default class="mimic_left">
+      <site size="0.01 0.005 0.005" group="3" rgba="1 0 0 1"/>
+    </default>
+  </default>
+
+  <asset>
+    <texture type="skybox" colorspace="auto" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" colorspace="auto" name="right_groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <texture type="skybox" colorspace="auto" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" colorspace="auto" name="left_groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <texture type="cube" colorspace="auto" name="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="cube" colorspace="auto" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="1800"/>
+    <material name="right_groundplane" texture="right_groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="left_groundplane" texture="left_groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <mesh name="R_hand_base_link" content_type="model/stl" file="R_hand_base_link.STL"/>
+    <mesh name="Link11_R" content_type="model/stl" file="Link11_R.STL"/>
+    <mesh name="Link12_R" content_type="model/stl" file="Link12_R.STL"/>
+    <mesh name="Link13_R" content_type="model/stl" file="Link13_R.STL"/>
+    <mesh name="Link14_R" content_type="model/stl" file="Link14_R.STL"/>
+    <mesh name="Link15_R" content_type="model/stl" file="Link15_R.STL"/>
+    <mesh name="Link16_R" content_type="model/stl" file="Link16_R.STL"/>
+    <mesh name="Link17_R" content_type="model/stl" file="Link17_R.STL"/>
+    <mesh name="Link18_R" content_type="model/stl" file="Link18_R.STL"/>
+    <mesh name="Link19_R" content_type="model/stl" file="Link19_R.STL"/>
+    <mesh name="Link20_R" content_type="model/stl" file="Link20_R.STL"/>
+    <mesh name="Link21_R" content_type="model/stl" file="Link21_R.STL"/>
+    <mesh name="Link22_R" content_type="model/stl" file="Link22_R.STL"/>
+    <mesh name="L_hand_base_link" content_type="model/stl" file="L_hand_base_link.STL"/>
+    <mesh name="Link11_L" content_type="model/stl" file="Link11_L.STL"/>
+    <mesh name="Link12_L" content_type="model/stl" file="Link12_L.STL"/>
+    <mesh name="Link13_L" content_type="model/stl" file="Link13_L.STL"/>
+    <mesh name="Link14_L" content_type="model/stl" file="Link14_L.STL"/>
+    <mesh name="Link15_L" content_type="model/stl" file="Link15_L.STL"/>
+    <mesh name="Link16_L" content_type="model/stl" file="Link16_L.STL"/>
+    <mesh name="Link17_L" content_type="model/stl" file="Link17_L.STL"/>
+    <mesh name="Link18_L" content_type="model/stl" file="Link18_L.STL"/>
+    <mesh name="Link19_L" content_type="model/stl" file="Link19_L.STL"/>
+    <mesh name="Link20_L" content_type="model/stl" file="Link20_L.STL"/>
+    <mesh name="Link21_L" content_type="model/stl" file="Link21_L.STL"/>
+    <mesh name="Link22_L" content_type="model/stl" file="Link22_L.STL"/>
+    <mesh name="right_2" file="../../objects/right_5a5d6@4/2.obj"/>
+    <mesh name="right_right_5a5d6@4" file="../../objects/right_5a5d6@4/right_5a5d6@4.obj"/>
+    <mesh name="right_4" file="../../objects/right_5a5d6@4/4.obj"/>
+    <mesh name="right_0" file="../../objects/right_5a5d6@4/0.obj"/>
+    <mesh name="right_3" file="../../objects/right_5a5d6@4/3.obj"/>
+    <mesh name="right_1" file="../../objects/right_5a5d6@4/1.obj"/>
+    <mesh name="left_6" file="../../objects/left_5a5d6@4/6.obj"/>
+    <mesh name="left_2" file="../../objects/left_5a5d6@4/2.obj"/>
+    <mesh name="left_5" file="../../objects/left_5a5d6@4/5.obj"/>
+    <mesh name="left_4" file="../../objects/left_5a5d6@4/4.obj"/>
+    <mesh name="left_7" file="../../objects/left_5a5d6@4/7.obj"/>
+    <mesh name="left_left_5a5d6@4" file="../../objects/left_5a5d6@4/left_5a5d6@4.obj"/>
+    <mesh name="left_0" file="../../objects/left_5a5d6@4/0.obj"/>
+    <mesh name="left_3" file="../../objects/left_5a5d6@4/3.obj"/>
+    <mesh name="left_1" file="../../objects/left_5a5d6@4/1.obj"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" size="0 0 0.05" type="plane" material="right_groundplane"/>
+    <light pos="0 0 3.5" dir="0 0 -1"/>
+    <light pos="0 0 3.5" dir="0 0 -1"/>
+    <body name="right_hand_base" gravcomp="1">
+      <joint name="right_pos_x" pos="0 0 0" axis="1 0 0" type="slide" range="-1 1"/>
+      <joint name="right_pos_y" pos="0 0 0" axis="0 1 0" type="slide" range="-1 1"/>
+      <joint name="right_pos_z" pos="0 0 0" axis="0 0 1" type="slide" range="-1 1"/>
+      <joint name="right_rot_x" pos="0 0 0" axis="1 0 0" range="-6.28 6.28"/>
+      <joint name="right_rot_y" pos="0 0 0" axis="0 1 0" range="-6.28 6.28"/>
+      <joint name="right_rot_z" pos="0 0 0" axis="0 0 1" range="-6.28 6.28"/>
+      <geom name="right_palm_collision" size="0.02 0.08 0.03" pos="0 -0.06 0" type="box" group="3" density="0" rgba="0 1 0 1"/>
+      <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="R_hand_base_link"/>
+      <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="R_hand_base_link"/>
+      <site name="right_palm" class="mimic_right" pos="0.00028533 -0.1371 -0.01295" size="0.01 0.02 0.03" type="box"/>
+      <body name="right_thumb_proximal_base" pos="-0.01696 -0.0691 -0.02045" quat="0.499998 0.5 -0.5 0.500002">
+        <inertial pos="-0.0048064 0.0009382 -0.00757" quat="0.515015 0.680854 0.408023 0.323596" mass="0.0018869" diaginertia="8.66026e-08 6.8732e-08 4.94194e-08"/>
+        <joint name="right_thumb_proximal_yaw_joint" pos="0 0 0" axis="0 0 -1" range="-0.1 1.3"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link11_R"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link11_R"/>
+        <body name="right_thumb_proximal" pos="-0.0088099 0.010892 -0.00925" quat="0.0996843 0.0996847 0.700046 0.700044">
+          <inertial pos="0.021932 0.012785 -0.0080386" quat="-0.254474 0.660716 0.251893 0.659733" mass="0.0066075" diaginertia="2.78601e-06 2.43933e-06 8.64566e-07"/>
+          <joint name="right_thumb_proximal_pitch_joint" pos="0 0 0" axis="0 0 1" range="0 0.5"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link12_R"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link12_R"/>
+          <geom name="right_thumb_intermediate_collision" size="0.01 0.0317451" pos="0.022392 0.0163635 -0.005" quat="0.707107 0.420197 -0.568713 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <body name="right_thumb_intermediate" pos="0.04407 0.034553 -0.0008">
+            <inertial pos="0.0095544 -0.0016282 -0.0071997" quat="0.636718 0.307389 -0.636802 0.307548" mass="0.0037847" diaginertia="4.6531e-07 4.48089e-07 2.45661e-07"/>
+            <joint name="right_thumb_intermediate_joint" class="finger" pos="0 0 0" axis="0 0 1" range="0 0.8"/>
+            <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link13_R"/>
+            <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link13_R"/>
+            <body name="right_thumb_distal" pos="0.020248 0.010156 -0.0012">
+              <inertial pos="0.0092888 0.0049529 -0.0060033" quat="-0.266294 0.655967 0.262806 0.655537" mass="0.0033441" diaginertia="2.0026e-07 1.95247e-07 8.1593e-08"/>
+              <joint name="right_thumb_distal_joint" pos="0 0 0" axis="0 0 1" range="0 1.2"/>
+              <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link14_R"/>
+              <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link14_R"/>
+              <geom name="right_thumb_collision" size="0.005 0.0162262" pos="0.0059552 0.0028038 -0.00549511" quat="0.717814 0.549644 -0.427359 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+              <site name="right_thumb_tip" class="mimic_right" pos="0.0159104 0.0156076 -0.00599021"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_index_proximal" pos="0.00028533 -0.13653 -0.032268" quat="0.0174454 -0.999848 0 0">
+        <inertial pos="0.0012259 0.011942 -0.0060001" quat="0.50867 0.49121 -0.508643 0.491172" mass="0.0042403" diaginertia="6.9398e-07 6.62871e-07 2.10909e-07"/>
+        <joint name="right_index_proximal_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link15_R"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link15_R"/>
+        <geom name="right_index_intermediate_collision" size="0.01 0.0208339" pos="0.000851 0.011381 -0.005" quat="0.707107 0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="right_index_intermediate" pos="-0.0026138 0.032026 -0.001">
+          <inertial pos="0.0019697 0.019589 -0.005" quat="0.466773 0.531152 -0.466773 0.531153" mass="0.0045683" diaginertia="7.8179e-07 7.72465e-07 8.47212e-08"/>
+          <joint name="right_index_intermediate_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link16_R"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link16_R"/>
+          <geom name="right_index_collision" size="0.005 0.0116568" pos="-0.00406027 0.0316566 -0.00500524" quat="0.707266 0.706939 0.0036549 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="right_index_tip" class="mimic_right" pos="-0.00412053 0.0433132 -0.00501047"/>
+        </body>
+      </body>
+      <body name="right_middle_proximal" pos="0.00028533 -0.1371 -0.01295" quat="-3.67321e-06 -1 0 0">
+        <inertial pos="0.001297 0.011934 -0.0060001" quat="0.510131 0.489693 -0.510105 0.489653" mass="0.0042403" diaginertia="6.9397e-07 6.62865e-07 2.10915e-07"/>
+        <joint name="right_middle_proximal_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link17_R"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link17_R"/>
+        <geom name="right_middle_intermediate_collision" size="0.005 0.0208339" pos="0.000851 0.011381 -0.005" quat="0.707107 0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="right_middle_intermediate" pos="-0.0024229 0.032041 -0.001">
+          <inertial pos="0.001921 0.020796 -0.005" quat="0.466148 0.531627 -0.466229 0.531705" mass="0.0050396" diaginertia="9.8384e-07 9.73279e-07 9.14014e-08"/>
+          <joint name="right_middle_intermediate_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link18_R"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link18_R"/>
+          <geom name="right_middle_collision" size="0.005 0.0133028" pos="-0.00413439 0.0333022 -0.00499339" quat="0.706931 0.707246 0.00714549 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="right_middle_tip" class="mimic_right" pos="-0.00426879 0.0466043 -0.00498678"/>
+        </body>
+      </body>
+      <body name="right_ring_proximal" pos="0.00028533 -0.13691 0.0062872" quat="0.0261933 0.999657 0 0">
+        <inertial pos="0.001297 0.011934 -0.0060002" quat="0.510129 0.489691 -0.510107 0.489654" mass="0.0042403" diaginertia="6.9397e-07 6.62865e-07 2.10915e-07"/>
+        <joint name="right_ring_proximal_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link19_R"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link19_R"/>
+        <geom name="right_ring_intermediate_collision" size="0.005 0.0208339" pos="0.000851 0.011381 -0.005" quat="0.707107 0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="right_ring_intermediate" pos="-0.0024229 0.032041 -0.001">
+          <inertial pos="0.0021753 0.019567 -0.005" quat="0.469554 0.528695 -0.469554 0.528695" mass="0.0045683" diaginertia="7.8177e-07 7.72448e-07 8.4722e-08"/>
+          <joint name="right_ring_intermediate_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link20_R"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link20_R"/>
+          <geom name="right_ring_collision" size="0.005 0.0116782" pos="-0.00383277 0.031677 -0.00500524" quat="0.707265 0.706876 -0.0101233 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="right_ring_tip" class="mimic_right" pos="-0.00366554 0.0433541 -0.00501047"/>
+        </body>
+      </body>
+      <body name="right_pinky_proximal" pos="0.00028533 -0.13571 0.025488" quat="0.0523224 0.99863 0 0">
+        <inertial pos="0.001297 0.011934 -0.0060001" quat="0.51013 0.489693 -0.510106 0.489653" mass="0.0042403" diaginertia="6.9397e-07 6.62865e-07 2.10915e-07"/>
+        <joint name="right_pinky_proximal_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link21_R"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link21_R"/>
+        <geom name="right_pinky_intermediate_collision" size="0.005 0.0208339" pos="0.000851 0.011381 -0.005" quat="0.707107 0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="right_pinky_intermediate" pos="-0.0024229 0.032041 -0.001">
+          <inertial pos="0.0024748 0.016203 -0.0050031" quat="0.47398 0.528862 -0.469291 0.524799" mass="0.0035996" diaginertia="4.4867e-07 4.43723e-07 6.56538e-08"/>
+          <joint name="right_pinky_intermediate_joint" pos="0 0 0" axis="0 0 1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link22_R"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link22_R"/>
+          <geom name="right_pinky_collision" size="0.005 0.00816854" pos="-0.00330367 0.0281388 -0.00500524" quat="0.707333 0.704307 -0.0602583 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="right_pinky_tip" class="mimic_right" pos="-0.00260734 0.0362776 -0.00501047"/>
+        </body>
+      </body>
+    </body>
+    <body name="left_hand_base">
+      <joint name="left_pos_x" pos="0 0 0" axis="1 0 0" type="slide" range="-1 1"/>
+      <joint name="left_pos_y" pos="0 0 0" axis="0 1 0" type="slide" range="-1 1"/>
+      <joint name="left_pos_z" pos="0 0 0" axis="0 0 1" type="slide" range="-1 1"/>
+      <joint name="left_rot_x" pos="0 0 0" axis="1 0 0" range="-6.28 6.28"/>
+      <joint name="left_rot_y" pos="0 0 0" axis="0 1 0" range="-6.28 6.28"/>
+      <joint name="left_rot_z" pos="0 0 0" axis="0 0 1" range="-6.28 6.28"/>
+      <geom name="left_palm_collision" size="0.02 0.08 0.03" pos="0 -0.06 0" type="box" group="3" density="0" rgba="0 1 0 1"/>
+      <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="L_hand_base_link"/>
+      <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="L_hand_base_link"/>
+      <site name="left_palm" class="mimic_left" pos="0 -0.06 0" size="0.01 0.02 0.03" type="box"/>
+      <body name="left_thumb_proximal_base" pos="-0.01696 -0.0691 0.02045" quat="0.499998 0.5 -0.5 0.500002">
+        <inertial pos="0.0048817 0.00038782 -0.00722" quat="0.445981 0.352284 0.495833 0.656617" mass="0.0018869" diaginertia="8.66031e-08 6.87331e-08 4.94199e-08"/>
+        <joint name="left_thumb_proximal_yaw_joint" pos="0 0 0" axis="0 0 1" range="-0.1 1.3"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link11_L"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link11_L"/>
+        <body name="left_thumb_proximal" pos="0.0099867 0.0098242 -0.0089" quat="0.704571 -0.704573 -0.0598169 0.0598167">
+          <inertial pos="0.021936 -0.01279 -0.0080386" quat="0.25452 0.660687 -0.251949 0.659723" mass="0.0066101" diaginertia="2.78701e-06 2.44024e-06 8.6466e-07"/>
+          <joint name="left_thumb_proximal_pitch_joint" pos="0 0 0" axis="0 0 -1" range="0 0.5"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link12_L"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link12_L"/>
+          <geom name="left_thumb_intermediate_collision" size="0.01 0.0317451" pos="0.022392 -0.0163635 -0.005" quat="0.707107 -0.420197 -0.568713 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <body name="left_thumb_intermediate" pos="0.04407 -0.034553 -0.0008">
+            <inertial pos="0.0095531 0.0016282 -0.0072002" quat="0.30738 0.636732 -0.307526 0.636803" mass="0.0037844" diaginertia="4.6532e-07 4.48114e-07 2.45646e-07"/>
+            <joint name="left_thumb_intermediate_joint" pos="0 0 0" axis="0 0 -1" range="0 0.8"/>
+            <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link13_L"/>
+            <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link13_L"/>
+            <body name="left_thumb_distal" pos="0.020248 -0.010156 -0.0012">
+              <inertial pos="0.0092888 -0.004953 -0.0060033" quat="0.266264 0.65596 -0.262836 0.655544" mass="0.003344" diaginertia="2.0026e-07 1.95246e-07 8.1594e-08"/>
+              <joint name="left_thumb_distal_joint" pos="0 0 0" axis="0 0 -1" range="0 1.2"/>
+              <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link14_L"/>
+              <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link14_L"/>
+              <geom name="left_thumb_collision" size="0.005 0.0115393" pos="0.0079552 -0.0078038 -0.00299511" quat="0.793586 -0.426092 -0.434358 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+              <site name="left_thumb_tip" class="mimic_left" pos="0.0159104 -0.0156076 -0.00599021"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="left_index_proximal" pos="0.00028533 -0.13653 0.032268" quat="0.999848 -0.0174526 0 0">
+        <inertial pos="0.0012971 -0.011934 -0.0059998" quat="0.489677 0.510115 -0.489692 0.510099" mass="0.0042405" diaginertia="6.9402e-07 6.62904e-07 2.10916e-07"/>
+        <joint name="left_index_proximal_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link15_L"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link15_L"/>
+        <geom name="left_index_intermediate_collision" size="0.005 0.0208339" pos="0.000851 -0.011381 -0.005" quat="0.707107 -0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="left_index_intermediate" pos="-0.0024229 -0.032041 -0.001">
+          <inertial pos="0.0021753 -0.019567 -0.005" quat="0.528694 0.469555 -0.528694 0.469555" mass="0.0045682" diaginertia="7.8176e-07 7.72427e-07 8.47209e-08"/>
+          <joint name="left_index_intermediate_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link16_L"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link16_L"/>
+          <geom name="left_index_collision" size="0.005 0.0123435" pos="-6.0265e-05 -0.0316566 -0.00500524" quat="0.707257 -0.667615 0.232546 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="left_index_tip" class="mimic_left" pos="-0.00412053 -0.0433132 -0.00501047"/>
+        </body>
+      </body>
+      <body name="left_middle_proximal" pos="0.00028533 -0.1371 0.01295">
+        <inertial pos="0.0012971 -0.011934 -0.0059999" quat="0.489677 0.510115 -0.489692 0.510099" mass="0.0042405" diaginertia="6.9402e-07 6.62904e-07 2.10916e-07"/>
+        <joint name="left_middle_proximal_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link17_L"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link17_L"/>
+        <geom name="left_middle_intermediate_collision" size="0.005 0.0208339" pos="0.000851 -0.011381 -0.005" quat="0.707107 -0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="left_middle_intermediate" pos="-0.0024229 -0.032041 -0.001">
+          <inertial pos="0.001921 -0.020796 -0.0049999" quat="0.531603 0.466115 -0.531728 0.466262" mass="0.0050397" diaginertia="9.8385e-07 9.73288e-07 9.14016e-08"/>
+          <joint name="left_middle_intermediate_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link18_L"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link18_L"/>
+          <geom name="left_middle_collision" size="0.005 0.0139298" pos="-0.000134395 -0.0333022 -0.00499339" quat="0.706939 -0.675404 0.20992 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="left_middle_tip" class="mimic_left" pos="-0.00426879 -0.0466043 -0.00498678"/>
+        </body>
+      </body>
+      <body name="left_ring_proximal" pos="0.00028533 -0.13691 -0.0062872" quat="0.999657 0.026177 0 0">
+        <inertial pos="0.0012971 -0.011934 -0.0059999" quat="0.489677 0.510114 -0.489692 0.510099" mass="0.0042405" diaginertia="6.9402e-07 6.62904e-07 2.10916e-07"/>
+        <joint name="left_ring_proximal_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link19_L"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link19_L"/>
+        <geom name="left_ring_intermediate_collision" size="0.005 0.0208339" pos="0.000851 -0.011381 -0.005" quat="0.707107 -0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="left_ring_intermediate" pos="-0.0024229 -0.032041 -0.001">
+          <inertial pos="0.0021753 -0.019567 -0.005" quat="0.528694 0.469556 -0.528694 0.469556" mass="0.0045682" diaginertia="7.8176e-07 7.72437e-07 8.47208e-08"/>
+          <joint name="left_ring_intermediate_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link20_L"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link20_L"/>
+          <geom name="left_ring_collision" size="0.005 0.01229" pos="0.00016723 -0.031677 -0.00500524" quat="0.707257 -0.671699 0.220472 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="left_ring_tip" class="mimic_left" pos="-0.00366554 -0.0433541 -0.00501047"/>
+        </body>
+      </body>
+      <body name="left_pinky_proximal" pos="0.00028533 -0.13571 -0.025488" quat="0.99863 0.0523361 0 0">
+        <inertial pos="0.0012971 -0.011934 -0.0059999" quat="0.489677 0.510114 -0.489692 0.510099" mass="0.0042405" diaginertia="6.9402e-07 6.62904e-07 2.10916e-07"/>
+        <joint name="left_pinky_proximal_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+        <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link21_L"/>
+        <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link21_L"/>
+        <geom name="left_pinky_intermediate_collision" size="0.005 0.0208339" pos="0.000851 -0.011381 -0.005" quat="0.707107 -0.705754 -0.0437151 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+        <body name="left_pinky_intermediate" pos="-0.0024229 -0.032041 -0.001">
+          <inertial pos="0.0024788 -0.016208 -0.0050001" quat="0.526797 0.471683 -0.526793 0.471687" mass="0.0036036" diaginertia="4.4881e-07 4.43809e-07 6.5736e-08"/>
+          <joint name="left_pinky_intermediate_joint" pos="0 0 0" axis="0 0 -1" range="0 1.7"/>
+          <geom type="mesh" group="1" density="0" rgba="0.1 0.1 0.1 1" mesh="Link22_L"/>
+          <geom type="mesh" rgba="0.1 0.1 0.1 1" mesh="Link22_L"/>
+          <geom name="left_pinky_collision" size="0.005 0.00878375" pos="0.00069633 -0.0281388 -0.00500524" quat="0.707317 -0.654992 0.265872 0" type="capsule" group="3" density="0" rgba="0 1 0 1"/>
+          <site name="left_pinky_tip" class="mimic_left" pos="-0.00260734 -0.0362776 -0.00501047"/>
+        </body>
+      </body>
+    </body>
+    <body name="right_object">
+      <joint name="right_object_joint" type="free" limited="false" actuatorfrclimited="false" armature="0.0001" frictionloss="0.0001"/>
+      <geom name="right_object_2" type="mesh" rgba="0 1 0 1" mesh="right_2"/>
+      <geom name="right_object_right_5a5d6@4" type="mesh" density="0" rgba="1 1 1 1" mesh="right_right_5a5d6@4"/>
+      <geom name="right_object_4" type="mesh" rgba="0 1 0 1" mesh="right_4"/>
+      <geom name="right_object_0" type="mesh" rgba="0 1 0 1" mesh="right_0"/>
+      <geom name="right_object_3" type="mesh" rgba="0 1 0 1" mesh="right_3"/>
+      <geom name="right_object_1" type="mesh" rgba="0 1 0 1" mesh="right_1"/>
+      <site name="right_object" pos="0 0 0" size="0.01 0.02 0.03" type="box" rgba="1 0 0 1"/>
+    </body>
+    <body name="left_object">
+      <joint name="left_object_joint" type="free" limited="false" actuatorfrclimited="false" armature="0"/>
+      <geom name="left_object_6" type="mesh" density="100" rgba="0 1 0 1" mesh="left_6"/>
+      <geom name="left_object_2" type="mesh" density="100" rgba="0 1 0 1" mesh="left_2"/>
+      <geom name="left_object_5" type="mesh" density="100" rgba="0 1 0 1" mesh="left_5"/>
+      <geom name="left_object_4" type="mesh" density="100" rgba="0 1 0 1" mesh="left_4"/>
+      <geom name="left_object_7" type="mesh" density="100" rgba="0 1 0 1" mesh="left_7"/>
+      <geom name="left_object_left_5a5d6@4" type="mesh" density="0" rgba="1 1 1 1" mesh="left_left_5a5d6@4"/>
+      <geom name="left_object_0" type="mesh" density="100" rgba="0 1 0 1" mesh="left_0"/>
+      <geom name="left_object_3" type="mesh" density="100" rgba="0 1 0 1" mesh="left_3"/>
+      <geom name="left_object_1" type="mesh" density="100" rgba="0 1 0 1" mesh="left_1"/>
+      <site name="left_object" pos="0 0 0" size="0.01 0.02 0.03" type="box" rgba="1 0 0 1"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <pair geom1="floor" geom2="right_object_2" name="floor_right_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="right_object_4" name="floor_right_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="right_object_0" name="floor_right_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="right_object_3" name="floor_right_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="right_object_1" name="floor_right_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_6" name="floor_left_object_6" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_2" name="floor_left_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_5" name="floor_left_object_5" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_4" name="floor_left_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_7" name="floor_left_object_7" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_0" name="floor_left_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_3" name="floor_left_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="floor" geom2="left_object_1" name="floor_left_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="right_object_2" name="right_thumb_collision_right_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="right_object_4" name="right_thumb_collision_right_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="right_object_0" name="right_thumb_collision_right_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="right_object_3" name="right_thumb_collision_right_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="right_object_1" name="right_thumb_collision_right_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_6" name="right_thumb_collision_left_object_6" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_2" name="right_thumb_collision_left_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_5" name="right_thumb_collision_left_object_5" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_4" name="right_thumb_collision_left_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_7" name="right_thumb_collision_left_object_7" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_0" name="right_thumb_collision_left_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_3" name="right_thumb_collision_left_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_thumb_collision" geom2="left_object_1" name="right_thumb_collision_left_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="right_object_2" name="right_index_intermediate_collision_right_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="right_object_4" name="right_index_intermediate_collision_right_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="right_object_0" name="right_index_intermediate_collision_right_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="right_object_3" name="right_index_intermediate_collision_right_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="right_object_1" name="right_index_intermediate_collision_right_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_6" name="right_index_intermediate_collision_left_object_6" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_2" name="right_index_intermediate_collision_left_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_5" name="right_index_intermediate_collision_left_object_5" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_4" name="right_index_intermediate_collision_left_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_7" name="right_index_intermediate_collision_left_object_7" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_0" name="right_index_intermediate_collision_left_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_3" name="right_index_intermediate_collision_left_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_intermediate_collision" geom2="left_object_1" name="right_index_intermediate_collision_left_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="right_object_2" name="right_index_collision_right_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_collision" geom2="right_object_4" name="right_index_collision_right_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_collision" geom2="right_object_0" name="right_index_collision_right_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_collision" geom2="right_object_3" name="right_index_collision_right_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_collision" geom2="right_object_1" name="right_index_collision_right_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_6" name="right_index_collision_left_object_6" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_2" name="right_index_collision_left_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_5" name="right_index_collision_left_object_5" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_4" name="right_index_collision_left_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_7" name="right_index_collision_left_object_7" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_0" name="right_index_collision_left_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_3" name="right_index_collision_left_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_index_collision" geom2="left_object_1" name="right_index_collision_left_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="right_object_2" name="right_middle_collision_right_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_middle_collision" geom2="right_object_4" name="right_middle_collision_right_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_middle_collision" geom2="right_object_0" name="right_middle_collision_right_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_middle_collision" geom2="right_object_3" name="right_middle_collision_right_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_middle_collision" geom2="right_object_1" name="right_middle_collision_right_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_6" name="right_middle_collision_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_2" name="right_middle_collision_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_5" name="right_middle_collision_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_4" name="right_middle_collision_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_7" name="right_middle_collision_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_0" name="right_middle_collision_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_3" name="right_middle_collision_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_middle_collision" geom2="left_object_1" name="right_middle_collision_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="right_object_2" name="right_ring_collision_right_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_ring_collision" geom2="right_object_4" name="right_ring_collision_right_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_ring_collision" geom2="right_object_0" name="right_ring_collision_right_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_ring_collision" geom2="right_object_3" name="right_ring_collision_right_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_ring_collision" geom2="right_object_1" name="right_ring_collision_right_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_6" name="right_ring_collision_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_2" name="right_ring_collision_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_5" name="right_ring_collision_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_4" name="right_ring_collision_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_7" name="right_ring_collision_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_0" name="right_ring_collision_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_3" name="right_ring_collision_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_ring_collision" geom2="left_object_1" name="right_ring_collision_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="right_object_2" name="right_pinky_collision_right_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="right_object_4" name="right_pinky_collision_right_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="right_object_0" name="right_pinky_collision_right_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="right_object_3" name="right_pinky_collision_right_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="right_object_1" name="right_pinky_collision_right_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_6" name="right_pinky_collision_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_2" name="right_pinky_collision_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_5" name="right_pinky_collision_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_4" name="right_pinky_collision_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_7" name="right_pinky_collision_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_0" name="right_pinky_collision_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_3" name="right_pinky_collision_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_pinky_collision" geom2="left_object_1" name="right_pinky_collision_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="right_object_2" name="left_thumb_collision_right_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="right_object_4" name="left_thumb_collision_right_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="right_object_0" name="left_thumb_collision_right_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="right_object_3" name="left_thumb_collision_right_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="right_object_1" name="left_thumb_collision_right_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_6" name="left_thumb_collision_left_object_6" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_2" name="left_thumb_collision_left_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_5" name="left_thumb_collision_left_object_5" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_4" name="left_thumb_collision_left_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_7" name="left_thumb_collision_left_object_7" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_0" name="left_thumb_collision_left_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_3" name="left_thumb_collision_left_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_thumb_collision" geom2="left_object_1" name="left_thumb_collision_left_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="right_object_2" name="left_index_intermediate_collision_right_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="right_object_4" name="left_index_intermediate_collision_right_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="right_object_0" name="left_index_intermediate_collision_right_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="right_object_3" name="left_index_intermediate_collision_right_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="right_object_1" name="left_index_intermediate_collision_right_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_6" name="left_index_intermediate_collision_left_object_6" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_2" name="left_index_intermediate_collision_left_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_5" name="left_index_intermediate_collision_left_object_5" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_4" name="left_index_intermediate_collision_left_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_7" name="left_index_intermediate_collision_left_object_7" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_0" name="left_index_intermediate_collision_left_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_3" name="left_index_intermediate_collision_left_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_intermediate_collision" geom2="left_object_1" name="left_index_intermediate_collision_left_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="right_object_2" name="left_index_collision_right_object_2" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_collision" geom2="right_object_4" name="left_index_collision_right_object_4" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_collision" geom2="right_object_0" name="left_index_collision_right_object_0" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_collision" geom2="right_object_3" name="left_index_collision_right_object_3" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_collision" geom2="right_object_1" name="left_index_collision_right_object_1" condim="4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_6" name="left_index_collision_left_object_6" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_2" name="left_index_collision_left_object_2" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_5" name="left_index_collision_left_object_5" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_4" name="left_index_collision_left_object_4" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_7" name="left_index_collision_left_object_7" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_0" name="left_index_collision_left_object_0" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_3" name="left_index_collision_left_object_3" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_index_collision" geom2="left_object_1" name="left_index_collision_left_object_1" condim="4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="right_object_2" name="left_middle_collision_right_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_middle_collision" geom2="right_object_4" name="left_middle_collision_right_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_middle_collision" geom2="right_object_0" name="left_middle_collision_right_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_middle_collision" geom2="right_object_3" name="left_middle_collision_right_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_middle_collision" geom2="right_object_1" name="left_middle_collision_right_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_6" name="left_middle_collision_left_object_6" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_2" name="left_middle_collision_left_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_5" name="left_middle_collision_left_object_5" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_4" name="left_middle_collision_left_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_7" name="left_middle_collision_left_object_7" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_0" name="left_middle_collision_left_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_3" name="left_middle_collision_left_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_middle_collision" geom2="left_object_1" name="left_middle_collision_left_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="right_object_2" name="left_ring_collision_right_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_ring_collision" geom2="right_object_4" name="left_ring_collision_right_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_ring_collision" geom2="right_object_0" name="left_ring_collision_right_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_ring_collision" geom2="right_object_3" name="left_ring_collision_right_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_ring_collision" geom2="right_object_1" name="left_ring_collision_right_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_6" name="left_ring_collision_left_object_6" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_2" name="left_ring_collision_left_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_5" name="left_ring_collision_left_object_5" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_4" name="left_ring_collision_left_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_7" name="left_ring_collision_left_object_7" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_0" name="left_ring_collision_left_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_3" name="left_ring_collision_left_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_ring_collision" geom2="left_object_1" name="left_ring_collision_left_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="right_object_2" name="left_pinky_collision_right_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="right_object_4" name="left_pinky_collision_right_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="right_object_0" name="left_pinky_collision_right_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="right_object_3" name="left_pinky_collision_right_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="right_object_1" name="left_pinky_collision_right_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_6" name="left_pinky_collision_left_object_6" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_2" name="left_pinky_collision_left_object_2" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_5" name="left_pinky_collision_left_object_5" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_4" name="left_pinky_collision_left_object_4" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_7" name="left_pinky_collision_left_object_7" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_0" name="left_pinky_collision_left_object_0" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_3" name="left_pinky_collision_left_object_3" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="left_pinky_collision" geom2="left_object_1" name="left_pinky_collision_left_object_1" solref="0.008" friction="1 1 0.1 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_6" name="right_object_2_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_2" name="right_object_2_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_5" name="right_object_2_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_4" name="right_object_2_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_7" name="right_object_2_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_0" name="right_object_2_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_3" name="right_object_2_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_2" geom2="left_object_1" name="right_object_2_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_6" name="right_object_4_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_2" name="right_object_4_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_5" name="right_object_4_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_4" name="right_object_4_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_7" name="right_object_4_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_0" name="right_object_4_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_3" name="right_object_4_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_4" geom2="left_object_1" name="right_object_4_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_6" name="right_object_0_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_2" name="right_object_0_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_5" name="right_object_0_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_4" name="right_object_0_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_7" name="right_object_0_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_0" name="right_object_0_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_3" name="right_object_0_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_0" geom2="left_object_1" name="right_object_0_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_6" name="right_object_3_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_2" name="right_object_3_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_5" name="right_object_3_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_4" name="right_object_3_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_7" name="right_object_3_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_0" name="right_object_3_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_3" name="right_object_3_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_3" geom2="left_object_1" name="right_object_3_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_6" name="right_object_1_left_object_6" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_2" name="right_object_1_left_object_2" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_5" name="right_object_1_left_object_5" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_4" name="right_object_1_left_object_4" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_7" name="right_object_1_left_object_7" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_0" name="right_object_1_left_object_0" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_3" name="right_object_1_left_object_3" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+    <pair geom1="right_object_1" geom2="left_object_1" name="right_object_1_left_object_1" solref="0.008" friction="0.01 0.01 0.0001 0 0"/>
+  </contact>
+
+  <actuator>
+    <general name="right_pos_x_position" class="wrist_position" joint="right_pos_x" ctrlrange="-1 1"/>
+    <general name="right_pos_y_position" class="wrist_position" joint="right_pos_y" ctrlrange="-1 1"/>
+    <general name="right_pos_z_position" class="wrist_position" joint="right_pos_z" ctrlrange="-1 1"/>
+    <general name="right_rot_x_position" class="wrist_rotation" joint="right_rot_x" ctrlrange="-6.28 6.28"/>
+    <general name="right_rot_y_position" class="wrist_rotation" joint="right_rot_y" ctrlrange="-6.28 6.28"/>
+    <general name="right_rot_z_position" class="wrist_rotation" joint="right_rot_z" ctrlrange="-6.28 6.28"/>
+    <general name="right_thumb_proximal_yaw_position" class="finger" joint="right_thumb_proximal_yaw_joint" ctrlrange="-0.1 1.3"/>
+    <general name="right_thumb_proximal_pitch_position" class="finger" joint="right_thumb_proximal_pitch_joint" ctrlrange="0 0.5"/>
+    <general name="right_thumb_intermediate_position" class="finger" joint="right_thumb_intermediate_joint" ctrlrange="0 0.8"/>
+    <general name="right_thumb_distal_position" class="finger" joint="right_thumb_distal_joint" ctrlrange="0 1.2"/>
+    <general name="right_index_proximal_position" class="finger" joint="right_index_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="right_index_intermediate_position" class="finger" joint="right_index_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="right_middle_proximal_position" class="finger" joint="right_middle_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="right_middle_intermediate_position" class="finger" joint="right_middle_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="right_ring_proximal_position" class="finger" joint="right_ring_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="right_ring_intermediate_position" class="finger" joint="right_ring_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="right_pinky_proximal_position" class="finger" joint="right_pinky_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="right_pinky_intermediate_position" class="finger" joint="right_pinky_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="left_pos_x_position" joint="left_pos_x" ctrlrange="-1 1"/>
+    <general name="left_pos_y_position" joint="left_pos_y" ctrlrange="-1 1"/>
+    <general name="left_pos_z_position" joint="left_pos_z" ctrlrange="-1 1"/>
+    <general name="left_rot_x_position" joint="left_rot_x" ctrlrange="-6.28 6.28"/>
+    <general name="left_rot_y_position" joint="left_rot_y" ctrlrange="-6.28 6.28"/>
+    <general name="left_rot_z_position" joint="left_rot_z" ctrlrange="-6.28 6.28"/>
+    <general name="left_thumb_proximal_yaw_position" joint="left_thumb_proximal_yaw_joint" ctrlrange="-0.1 1.3"/>
+    <general name="left_thumb_proximal_pitch_position" joint="left_thumb_proximal_pitch_joint" ctrlrange="0 0.5"/>
+    <general name="left_thumb_intermediate_position" joint="left_thumb_intermediate_joint" ctrlrange="0 0.8"/>
+    <general name="left_thumb_distal_position" joint="left_thumb_distal_joint" ctrlrange="0 1.2"/>
+    <general name="left_index_proximal_position" joint="left_index_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="left_index_intermediate_position" joint="left_index_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="left_middle_proximal_position" joint="left_middle_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="left_middle_intermediate_position" joint="left_middle_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="left_ring_proximal_position" joint="left_ring_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="left_ring_intermediate_position" joint="left_ring_intermediate_joint" ctrlrange="0 1.7"/>
+    <general name="left_pinky_proximal_position" joint="left_pinky_proximal_joint" ctrlrange="0 1.7"/>
+    <general name="left_pinky_intermediate_position" joint="left_pinky_intermediate_joint" ctrlrange="0 1.7"/>
+  </actuator>
+</mujoco>

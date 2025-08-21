@@ -55,8 +55,11 @@ def load_data(
     raw_data = np.load(data_path)
     qpos_list = raw_data["qpos"]
     qvel_list = raw_data["qvel"]
+    print(raw_data.keys())
     if "ctrl" in raw_data:
         ctrl_list = raw_data["ctrl"]
+    elif "ctrls" in raw_data:
+        ctrl_list = raw_data["ctrls"]
     else:
         # Fallback if 'ctrl' is not in the data file
         print("Warning: 'ctrl' data not found, using 'qpos' as a fallback for control.")
@@ -117,10 +120,10 @@ def benchmark(
 
 
 def visualize(
-    dt_sim: float = 0.005,
-    dt_ctrl: float = 0.005,
-    model_path: str = "./assets/inspire/scene_bimanual_wipe.xml",
-    data_path: str = "./data/inspire_bimanual_wipe.npz",
+    dt_sim: float = 0.01,
+    dt_ctrl: float = 0.01,
+    model_path: str = "./assets/inspire/scene_bimanual_5a5d6@4.xml",
+    data_path: str = "./data/nan_data.npz",
 ) -> None:
     """
     Main function to load data, set up the simulation, and run the viewer.
@@ -141,6 +144,10 @@ def visualize(
     qvel_list = raw_data["qvel"]
     if "ctrl" in raw_data:
         ctrl_list = raw_data["ctrl"]
+    elif "ctrls" in raw_data:
+        ctrl_list = raw_data["ctrls"][3]
+        qpos_list = qpos_list[None]
+        qvel_list = qvel_list[None]
     else:
         # Fallback if 'ctrl' is not in the data file
         print("Warning: 'ctrl' data not found, using 'qpos' as a fallback for control.")
@@ -182,7 +189,12 @@ def visualize(
 
         while viewer.is_running():
             # Determine the control index based on simulation time, looping the trajectory
-            ctrl_idx = int(mjd.time / dt_ctrl) % qpos_list.shape[0]
+            ctrl_idx = int(mjd.time / dt_ctrl) % ctrl_list.shape[0]
+            if ctrl_idx == 0:
+                mjd.qpos[:] = qpos_list[0]
+                mjd.qvel[:] = qvel_list[0]
+                mjd.ctrl[:] = ctrl_list[0]
+                mujoco.mj_forward(mjm, mjd)
             mjd.ctrl[:] = ctrl_list[ctrl_idx]
 
             # --- MJWarp Simulation Step ---
@@ -195,6 +207,11 @@ def visualize(
             wp.copy(d.qpos, wp.array([mjd.qpos.astype(np.float32)]))
             wp.copy(d.qvel, wp.array([mjd.qvel.astype(np.float32)]))
             wp.copy(d.time, wp.array([mjd.time], dtype=wp.float32))
+
+            # check if qpos has nan
+            if np.isnan(mjd.qpos).any():
+                print("qpos has nan")
+                break
 
             # b. Execute the pre-compiled physics step on the GPU
             wp.capture_launch(graph)
